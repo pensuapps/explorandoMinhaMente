@@ -6,6 +6,7 @@
 .game-area .question-text {
   text-align: justify;
   margin-top: 2rem;
+  height: 5.626rem;
 }
 
 .game-area .action-buttons-container {
