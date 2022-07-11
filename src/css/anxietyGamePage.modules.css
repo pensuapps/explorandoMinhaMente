@@ -1,0 +1,29 @@
+.game-area {
+  width: 20rem;
+  margin: auto;
+}
+
+.game-area .question-text {
+  text-align: justify;
+  margin-top: 2rem;
+}
+
+.game-area .action-buttons-container {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 3rem;
+}
+
+.game-area .button-confirm {
+  background-color: var(--green-dark);
+}
+
+.game-area .button-reject {
+  background-color: var(--red);
+}
+
+.know-more {
+  margin-top: 2rem;
+  text-align: center;
+}

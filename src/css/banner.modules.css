@@ -1,0 +1,20 @@
+
+.banner {
+  width: 19.5rem;
+  height: 19.5rem;
+  margin: auto;
+  border-radius: 0.5rem;
+}
+
+.banner img {
+  display: block;
+
+  height: 100%;
+  width: 100%;
+
+  border-radius: 0.5rem;
+}
+
+.bg-purple {
+  background-color: var(--purple);
+}

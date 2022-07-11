@@ -1,0 +1,30 @@
+.square-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 9.625rem;
+  height: 9.625rem;
+
+  border-radius: 0.5rem;
+  
+  border: none;
+  
+  padding: 1rem;
+  
+  background-color: var(--purple);
+  color: white; 
+}
+
+.square-button img {
+  width: 4rem;
+  height: 4rem;
+}
+
+.square-button h3 {
+  font-size: 1rem;
+  font-weight: 900;
+  text-align: center;
+  text-decoration: none;
+}

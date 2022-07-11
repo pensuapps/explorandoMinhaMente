@@ -1,0 +1,109 @@
+:root {
+  --red: #bf3a22;
+  --pink: #bf226e;
+  --purple-dark: #521ba6;
+  --purple: #6b23d9;
+  --blue-dark1: #3174cc;
+  --blue-dark2: #4971bf;
+  --green: #36d9ad;
+  --green-dark: #94bf36;
+  --blue-aqua: #2bc6e3;
+  --yellow: #bfb036;
+  --gray: #f2f0eb;
+
+  --background: #521ba6;
+  --background-radial: #6b23d9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+@media (max-width: 1080px) {
+  html {
+    font-size: 93.75%;
+  }
+}
+@media (max-width: 720px) {
+  html {
+    font-size: 87.5%;
+  }
+}
+
+body {
+  background: radial-gradient(
+    circle,
+    var(--background-radial),
+    var(--background)
+  );
+  background-repeat: no-repeat;
+  -webkit-font-smoothing: antialiased;
+  color: white;
+  height: 100vh;
+}
+
+body,
+input,
+textarea,
+button {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+}
+
+main {
+  max-width: 60rem;
+  margin: auto;
+  padding: 1rem;
+}
+.header-container {
+  max-width: 60rem;
+  margin: auto;
+  padding: 0.5rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong {
+  font-weight: 600;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+@media (min-width: 1080px) {
+  button {
+    transition: filter 0.2s;
+  }
+  button:hover {
+    filter: brightness(0.95);
+  }
+}
+
+[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.rounded-icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 4rem;
+  height: 4rem;
+  border-radius: 2rem;
+}
+
+a {
+  text-decoration: none;
+}
