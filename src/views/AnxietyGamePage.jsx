@@ -7,7 +7,7 @@ import { useAnxietyQuestions } from "../hooks/anxietyQuestionary"
 export function AnxietyGamePage() {
   const { isLastQuestion, currentIndex, incrementCurrentIndex, currentQuestion } = useAnxietyQuestions()
 
-  function answareQuestion(answareScore){
+  function answareQuestion({ answareScore }) {
     incrementCurrentIndex()
   }
   return (
@@ -15,18 +15,18 @@ export function AnxietyGamePage() {
       <Header backTo={"/"} />
       <main>
         <section className="game-area">
-          <Banner img={require("../images/anxietyGame/kiddenyeat.png")} bgColor="bg-purple" />
+          <Banner img={require(`../images/anxietyGame/${currentQuestion.img}.png`)} bgColor={currentQuestion.bg} />
 
           <h2 className="question-text">{currentQuestion.text}</h2>
 
           <div className="action-buttons-container">
             {!isLastQuestion ?
               <>
-                <button className="button-confirm rounded-icon-button" onClick={() => answareQuestion()}>
+                <button className="button-confirm rounded-icon-button" onClick={() => answareQuestion({ answareScore: 1 })}>
                   <MdOutlineCheck size="48" color="white" />
                 </button>
 
-                <button className="button-reject rounded-icon-button" onClick={() => answareQuestion()}>
+                <button className="button-reject rounded-icon-button" onClick={() => answareQuestion({ answareScore: 1 })}>
                   <MdOutlineClose size="48" color="white" />
                 </button>
               </> : <>

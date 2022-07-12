@@ -4,169 +4,73 @@ export const anxietyQuestions = {
   {
     text: "Olá, vamos saber como você se sente na escola, e com os amiguinhos (as)?",
     classification: "startText",
-    answares: [
-      {
-        text: "sim",
-        point: 0
-      },
-      {
-        text: "não",
-        point: 0
-      }
-    ]
+    img: "kidthinking",
+    bg: ""
   },
   {
     text: "Você já sentiu seu coração batendo rápido, mesmo parado(a) sem fazer nada?",
     classification: "question",
-    answares: [
-      {
-        text: "sim",
-        point: 1
-      },
-      {
-        text: "não",
-        point: 0
-      }
-    ]
+    img: "kidheart",
+    bg: "bg-green"
   },
   {
     text: "Você já se sentiu um pouco tonto(a) ou zonzo(a)?",
     classification: "question",
-    answares: [
-      {
-        text: "sim",
-        point: 1
-      },
-      {
-        text: "não",
-        point: 0
-      }
-    ]
+    img: "kidconfuse",
+    bg: ""
   },
   {
     text: "Você sente medo de vir para escola ou sair de casa?",
     classification: "question",
-    answares: [
-      {
-        text: "sim",
-        point: 1
-      },
-      {
-        text: "não",
-        point: 0
-      }
-    ]
+    img: "kidscary",
+    bg: "bg-purple"
   },
   {
     text: "Você se assusta fácil?",
     classification: "question",
-    answares: [
-      {
-        text: "sim",
-        point: 1
-      },
-      {
-        text: "não",
-        point: 0
-      }
-    ]
+    img: "kidsmile",
+    bg: ""
   },
   {
     text: "Você se sente nervoso às vezes?",
     classification: "question",
-    answares: [
-      {
-        text: "sim",
-        point: 1
-      },
-      {
-        text: "não",
-        point: 0
-      }
-    ]
+    img: "kidangry",
+    bg: "bg-pink"
   },
   {
     text: "Você sente falta de ar quando está nervoso(a)?",
     classification: "question",
-    answares: [
-      {
-        text: "sim",
-        point: 1
-      },
-      {
-        text: "não",
-        point: 0
-      }
-    ]
+    img: "kidpain",
+    bg: "bg-red"
   },
   {
     text: "Você tem dor de barriga quando fica nervoso(a)?",
     classification: "question",
-    answares: [
-      {
-        text: "sim",
-        point: 1
-      },
-      {
-        text: "não",
-        point: 0
-      }
-    ]
+    img: "kidbelly",
+    bg: "bg-yellow"
   },
   {
     text: "Você fica suando mesmo sem calor?",
     classification: "question",
-    answares: [
-      {
-        text: "sim",
-        point: 1
-      },
-      {
-        text: "não",
-        point: 0
-      }
-    ]
+    img: "kidsweating",
+    bg: "bg-blue-dark2"
   },
   {
     text: "Você tem falta de apetite (come pouco ou sem vontade)?",
     classification: "question",
-    answares: [
-      {
-        text: "sim",
-        point: 1
-      },
-      {
-        text: "não",
-        point: 0
-      }
-    ]
+    img: "kiddenyeat",
+    bg: "bg-pink"
   },
   {
     text: "Você tem muita fome e quer comer sem parar?",
     classification: "question",
-    answares: [
-      {
-        text: "sim",
-        point: 1
-      },
-      {
-        text: "não",
-        point: 0
-      }
-    ]
+    img: "kidhungry",
+    bg: "bg-blue-aqua"
   },
   {
     text: "Valeu!!",
     classification: "lastQuestion",
-    answares: [
-      {
-        text: "sim",
-        point: 0
-      },
-      {
-        text: "não",
-        point: 0
-      }
-    ]
+    img: "kidok",
+    bg: ""
   },
 ]}
