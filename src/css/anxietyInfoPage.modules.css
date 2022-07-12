@@ -1,9 +1,10 @@
-.banner {
+.banner-info {
   width: 20.5rem;
+  height: 13.25rem;
   margin: auto;
 }
 
-.banner img {
+.banner-info img {
   width: 100%;
 }
 

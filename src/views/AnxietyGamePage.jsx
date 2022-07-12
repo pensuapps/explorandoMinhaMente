@@ -4,12 +4,14 @@ import { MdOutlineCheck, MdOutlineClose, MdThumbUp, MdThumbDown } from "react-ic
 import { Banner } from "../components/Banner"
 import { Header } from "../components/Header"
 import { useAnxietyQuestions } from "../hooks/anxietyQuestionary"
+import { Link } from "react-router-dom"
 export function AnxietyGamePage() {
   const { isLastQuestion, currentIndex, incrementCurrentIndex, currentQuestion } = useAnxietyQuestions()
 
   function answareQuestion({ answareScore }) {
     incrementCurrentIndex()
   }
+  
   return (
     <>
       <Header backTo={"/"} />
@@ -41,7 +43,7 @@ export function AnxietyGamePage() {
             }
           </div>
 
-          {isLastQuestion && <h4 className="know-more"><a>Ficou curioso? Clique aqui</a></h4>}
+          {isLastQuestion && <h4 className="know-more"><Link to="/informacoessobreansiedade">Ficou curioso? Clique aqui</Link></h4>}
         </section>
       </main>
     </>
