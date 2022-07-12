@@ -4,14 +4,19 @@ import { MdOutlineCheck, MdOutlineClose, MdThumbUp, MdThumbDown } from "react-ic
 import { Banner } from "../components/Banner"
 import { Header } from "../components/Header"
 import { useAnxietyQuestions } from "../hooks/anxietyQuestionary"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+
 export function AnxietyGamePage() {
-  const { isLastQuestion, currentIndex, incrementCurrentIndex, currentQuestion } = useAnxietyQuestions()
+  const navigate = useNavigate()
+  const { isLastQuestion, incrementCurrentIndex, currentQuestion } = useAnxietyQuestions()
 
   function answareQuestion({ answareScore }) {
+    if (currentQuestion.classification === "startText" && answareScore === 0) {
+      navigate("/")
+    }
     incrementCurrentIndex()
   }
-  
+
   return (
     <>
       <Header backTo={"/"} />
@@ -28,7 +33,7 @@ export function AnxietyGamePage() {
                   <MdOutlineCheck size="48" color="white" />
                 </button>
 
-                <button className="button-reject rounded-icon-button" onClick={() => answareQuestion({ answareScore: 1 })}>
+                <button className="button-reject rounded-icon-button" onClick={() => answareQuestion({ answareScore: 0 })}>
                   <MdOutlineClose size="48" color="white" />
                 </button>
               </> : <>

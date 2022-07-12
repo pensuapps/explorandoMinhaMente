@@ -16,7 +16,7 @@ export function useAnxietyQuestions() {
   }, [currentIndex]);
 
   const incrementCurrentIndex = () => {
-    !isLastQuestionaryQuestion(currentIndex) && setCurrentIndex(++currentIndex)
+    !isLastQuestionaryQuestion(currentIndex) && setCurrentIndex(++currentIndex);
   };
   const currentQuestion = questionary[currentIndex];
 
