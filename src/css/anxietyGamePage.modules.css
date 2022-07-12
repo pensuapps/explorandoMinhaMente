@@ -16,6 +16,15 @@
   margin-top: 0.85rem;
 }
 
+@media (max-width: 1080px) {
+  .game-area .action-buttons-container {
+    display: flex;
+    justify-content: space-between;
+  
+    margin-top: 3rem;
+  }
+}
+
 .game-area .button-confirm {
   background-color: var(--green-dark);
 }
