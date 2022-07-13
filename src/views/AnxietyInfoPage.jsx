@@ -4,11 +4,18 @@ import kidthinking from "../images/anxietyGame/kidthinking-anxietyinfo.png"
 
 import { MdThumbUp, MdThumbDown, MdLightbulb } from "react-icons/md"
 import { Header } from "../components/Header"
+import { useState } from "react"
 
 export function AnxietyInfoPage() {
+  const [showButtons, setShowButtons] = useState(true)
+  
+  const handleClickThumb = () => {
+    setShowButtons(false)
+  }
+
   return (
     <>
-      <Header backTo="/"/>
+      <Header backTo="/" />
       <main>
         <div className="banner-info">
           <img
@@ -23,28 +30,30 @@ export function AnxietyInfoPage() {
           respirando fundo e se concentrando no que está acontecendo neste momento, agora!
         </article>
 
-        <div className="actions-buttons-container">
-          <button className="legended-button">
-            <div className="button-confirm rounded-icon-button entendi">
-              <MdThumbUp size="44" color="white" />
-            </div>
-            <p>Entendi</p>
-          </button>
+        {showButtons &&
+          <div className="actions-buttons-container">
+            <button className="legended-button" onClick={handleClickThumb}>
+              <div className="button-confirm rounded-icon-button entendi">
+                <MdThumbUp size="44" color="white" />
+              </div>
+              <p>Entendi</p>
+            </button>
 
-          <button className="legended-button">
-            <div className="button-reject rounded-icon-button interessante">
-              <MdLightbulb size="44" color="white" />
-            </div>
-            <p>Interessante</p>
-          </button>
+            <button className="legended-button" onClick={handleClickThumb}>
+              <div className="button-reject rounded-icon-button interessante">
+                <MdLightbulb size="44" color="white" />
+              </div>
+              <p>Interessante</p>
+            </button>
 
-          <button className="legended-button">
-            <div className="button-reject rounded-icon-button nao-entendi">
-              <MdThumbDown size="44" color="white" />
-            </div>
-            <p>Não entendi</p>
-          </button>
-        </div>
+            <button className="legended-button" onClick={handleClickThumb}>
+              <div className="button-reject rounded-icon-button nao-entendi">
+                <MdThumbDown size="44" color="white" />
+              </div>
+              <p>Não entendi</p>
+            </button>
+          </div>
+        }
       </main>
     </>
   )
