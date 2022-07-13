@@ -67,10 +67,10 @@ export const anxietyQuestions = {
     img: "kidhungry",
     bg: "bg-blue-aqua"
   },
-  {
-    text: "Valeu!!",
-    classification: "lastQuestion",
-    img: "kidok",
-    bg: ""
-  },
+  // {
+  //   text: "Valeu!!",
+  //   classification: "lastQuestion",
+  //   img: "kidok",
+  //   bg: ""
+  // },
 ]}

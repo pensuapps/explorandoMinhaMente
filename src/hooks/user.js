@@ -5,9 +5,7 @@ export function useUser() {
     score: 0,
   });
 
-  const addScore = (value) => {
-    setUser({ score: user.score + value });
-  };
+  const addScore = () => setUser({ score: ++user.score });
 
   return { user, addScore };
 }
