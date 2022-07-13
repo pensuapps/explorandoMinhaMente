@@ -33,7 +33,6 @@ export function AnxietyGamePage() {
 
     if (userIsDoingTheQuestionary() && !!answareScore) {
       addScore(answareScore)
-      console.log(user.score)
     }
 
     if (isLastQuestion) {
