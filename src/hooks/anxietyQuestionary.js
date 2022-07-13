@@ -10,7 +10,7 @@ export function useAnxietyQuestions() {
     questionIndex + 1 === questionary.length;
 
   useEffect(() => {
-    if (isLastQuestionaryQuestion(currentIndex)) {
+    if (currentIndex + 1 === anxietyQuestions.questions.length) {
       setIsLastQuestion(true);
     }
   }, [currentIndex]);
