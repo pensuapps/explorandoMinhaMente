@@ -30,7 +30,7 @@ export function AnxietyGamePage() {
   }, [user.score])
 
   useEffect(() => {
-    if (showResult) {
+    if (showResult && process.env.NODE_ENV === "production") {
       addDoc(collection(db, "score"), {
         score: user.score,
         date: new Date().toLocaleDateString(),
