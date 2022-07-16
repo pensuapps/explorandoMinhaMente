@@ -16,9 +16,14 @@ export function AnxietyGamePage() {
 
   const [showResult, setShowResult] = useState(false)
   const [showThanksMsg, setshowThanksMsg] = useState(false)
+  const [flip, setFlip] = useState(false)
+  const halfAnimationTime = 1000
+  const totalAnimationTime = 2000
 
   useEffect(() => {
-    user.score === 6 && setShowResult(true)
+    if (user.score === 6) {
+      setTimeout(() => { setShowResult(true) }, 1000)
+    }
   }, [user.score])
 
   function answareQuestion({ answareScore }) {
@@ -36,11 +41,14 @@ export function AnxietyGamePage() {
     }
 
     if (isLastQuestion) {
-      setShowResult(true)
+      doPictureAnimation()
+      setTimeout(() => { setShowResult(true) }, halfAnimationTime)
       return
     }
 
-    incrementCurrentIndex()
+    doPictureAnimation()
+    setTimeout(() => { incrementCurrentIndex() }, halfAnimationTime)
+
   }
 
   function handleClickThumb() {
@@ -48,6 +56,11 @@ export function AnxietyGamePage() {
     !showThanksMsg && setshowThanksMsg(true)
   }
 
+  function doPictureAnimation() {
+    setFlip(true)
+    setTimeout(() => { setFlip(false) }, totalAnimationTime)
+  }
+  
   const userHasAnxiety = () => user.score === 6
   const userDeniedParticipating = (answareScore) => currentQuestion.classification === "startText" && answareScore === 0
   const userIsDoingTheQuestionary = () => currentQuestion.classification === "question"
@@ -59,18 +72,24 @@ export function AnxietyGamePage() {
         {!showResult ?
           <>
             <section className="game-area">
-              <Banner img={require(`../images/anxietyGame/${currentQuestion.img}.png`)} bgColor={currentQuestion.bg} />
+              <Banner img={require(`../images/anxietyGame/${currentQuestion.img}.png`)} bgColor={currentQuestion.bg} flip={flip} />
 
               <h2 className="question-text">{currentQuestion.text}</h2>
 
               <div className="action-buttons-container">
                 {true ?
                   <>
-                    <button className="button-confirm rounded-icon-button" onClick={() => answareQuestion({ answareScore: 1 })}>
+                    <button
+                      className="button-confirm rounded-icon-button"
+                      onClick={!flip ? () => answareQuestion({ answareScore: 1 }) : () => { }}
+                    >
                       <MdOutlineCheck size="48" color="white" />
                     </button>
 
-                    <button className="button-reject rounded-icon-button" onClick={() => answareQuestion({ answareScore: 0 })}>
+                    <button
+                      className="button-reject rounded-icon-button"
+                      onClick={!flip ? () => answareQuestion({ answareScore: 0 }) : () => { }}
+                    >
                       <MdOutlineClose size="48" color="white" />
                     </button>
                   </> : <>
@@ -87,7 +106,7 @@ export function AnxietyGamePage() {
             </section>
           </> : <>
             <section className="game-area">
-              <Banner img={require(`../images/anxietyGame/kidok.png`)} bgColor={currentQuestion.bg} />
+              <Banner img={require(`../images/anxietyGame/kidok.png`)} bgColor={currentQuestion.bg} flip={flip} />
 
               {showThanksMsg ?
                 <h2 className="question-result-text">
