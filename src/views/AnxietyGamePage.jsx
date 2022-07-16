@@ -55,7 +55,8 @@ export function AnxietyGamePage() {
 
   }
 
-  function handleClickThumb() {
+  function handleClickThumb({ answareScore }) {
+    blinkButtonAnimation(answareScore)
     showThanksMsg && navigate("/")
     !showThanksMsg && setshowThanksMsg(true)
   }
@@ -132,11 +133,17 @@ export function AnxietyGamePage() {
               }
 
               <div className="action-buttons-container">
-                <button className="button-confirm rounded-icon-button" onClick={handleClickThumb}>
+                <button
+                  className={`button-confirm rounded-icon-button ${blinkedButton === "confirm" ? "blinkButton" : ""}`}
+                  onClick={() => handleClickThumb({ answareScore: 1 })}
+                >
                   <MdThumbUp size="48" color="white" />
                 </button>
 
-                <button className="button-reject rounded-icon-button" onClick={handleClickThumb}>
+                <button
+                  className={`button-reject rounded-icon-button ${blinkedButton === "reject" ? "blinkButton" : ""}`}
+                  onClick={() => handleClickThumb({ answareScore: 0 })}
+                >
                   <MdThumbDown size="48" color="white" />
                 </button>
               </div>
