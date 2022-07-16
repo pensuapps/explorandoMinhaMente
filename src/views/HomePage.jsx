@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { SquareButton } from "../components/buttons/SquareButton";
 import { Logo } from "../components/Logo";
 import "../css/homePage.modules.css"
@@ -5,7 +6,12 @@ import "../css/homePage.modules.css"
 import ansiedade from "../images/ansiedade.png"
 import depressao from "../images/depressao.png"
 
+import ReactGA from "react-ga"
+
 export function HomePage() {
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname)
+  }, [])
   return (
     <main>
       <Logo />
