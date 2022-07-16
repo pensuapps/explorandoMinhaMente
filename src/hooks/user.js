@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { addDoc, collection, db } from "../plugins/firebase";
 
 export function useUser() {
   const [user, setUser] = useState({
@@ -7,5 +8,12 @@ export function useUser() {
 
   const addScore = () => setUser({ score: ++user.score });
 
-  return { user, addScore };
+  async function saveScore() {
+    await addDoc(collection(db, "score"), {
+      score: user.score,
+      date: new Date().toLocaleDateString(),
+    });
+  }
+
+  return { user, addScore, saveScore };
 }

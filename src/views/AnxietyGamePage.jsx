@@ -7,6 +7,7 @@ import { useAnxietyQuestions } from "../hooks/anxietyQuestionary"
 import { Link, useNavigate } from "react-router-dom"
 import { useUser } from "../hooks/user"
 import { useEffect, useState } from "react"
+import { addDoc, collection, db } from "../plugins/firebase";
 
 export function AnxietyGamePage() {
   const navigate = useNavigate()
@@ -27,6 +28,15 @@ export function AnxietyGamePage() {
       setTimeout(() => { setShowResult(true) }, 1000)
     }
   }, [user.score])
+
+  useEffect(() => {
+    if (showResult) {
+      addDoc(collection(db, "score"), {
+        score: user.score,
+        date: new Date().toLocaleDateString(),
+      });
+    }
+  }, [showResult, user.score])
 
   function handleAnswareQuestion({ answareScore }) {
     if (userHasAnxiety()) {
