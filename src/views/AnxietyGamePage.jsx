@@ -87,31 +87,19 @@ export function AnxietyGamePage() {
               <h2 className="question-text">{currentQuestion.text}</h2>
 
               <div className="action-buttons-container">
-                {true ?
-                  <>
-                    <button
-                      className={`button-confirm rounded-icon-button ${blinkedButton === "confirm" ? "blinkButton" : ""}`}
-                      onClick={!flip ? () => handleAnswareQuestion({ answareScore: 1 }) : () => { }}
-                    >
-                      <MdOutlineCheck size="48" color="white" />
-                    </button>
+                <button
+                  className={`button-confirm rounded-icon-button ${blinkedButton === "confirm" ? "blinkButton" : ""}`}
+                  onClick={!flip ? () => handleAnswareQuestion({ answareScore: 1 }) : () => { }}
+                >
+                  <MdOutlineCheck size="48" color="white" />
+                </button>
 
-                    <button
-                      className={`button-reject rounded-icon-button ${blinkedButton === "reject" ? "blinkButton" : ""}`}
-                      onClick={!flip ? () => handleAnswareQuestion({ answareScore: 0 }) : () => { }}
-                    >
-                      <MdOutlineClose size="48" color="white" />
-                    </button>
-                  </> : <>
-                    <button className="button-confirm rounded-icon-button">
-                      <MdThumbUp size="48" color="white" />
-                    </button>
-
-                    <button className="button-reject rounded-icon-button">
-                      <MdThumbDown size="48" color="white" />
-                    </button>
-                  </>
-                }
+                <button
+                  className={`button-reject rounded-icon-button ${blinkedButton === "reject" ? "blinkButton" : ""}`}
+                  onClick={!flip ? () => handleAnswareQuestion({ answareScore: 0 }) : () => { }}
+                >
+                  <MdOutlineClose size="48" color="white" />
+                </button>
               </div>
             </section>
           </> : <>
