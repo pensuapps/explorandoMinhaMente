@@ -16,7 +16,9 @@ export function AnxietyGamePage() {
 
   const [showResult, setShowResult] = useState(false)
   const [showThanksMsg, setshowThanksMsg] = useState(false)
+
   const [flip, setFlip] = useState(false)
+  const [blinkedButton, setBlinkedButton] = useState("default")
   const halfAnimationTime = 1000
   const totalAnimationTime = 2000
 
@@ -26,7 +28,7 @@ export function AnxietyGamePage() {
     }
   }, [user.score])
 
-  function answareQuestion({ answareScore }) {
+  function handleAnswareQuestion({ answareScore }) {
     if (userHasAnxiety()) {
       return
     }
@@ -42,11 +44,13 @@ export function AnxietyGamePage() {
 
     if (isLastQuestion) {
       doPictureAnimation()
+      blinkButtonAnimation(answareScore)
       setTimeout(() => { setShowResult(true) }, halfAnimationTime)
       return
     }
 
     doPictureAnimation()
+    blinkButtonAnimation(answareScore)
     setTimeout(() => { incrementCurrentIndex() }, halfAnimationTime)
 
   }
@@ -60,7 +64,12 @@ export function AnxietyGamePage() {
     setFlip(true)
     setTimeout(() => { setFlip(false) }, totalAnimationTime)
   }
-  
+
+  function blinkButtonAnimation(value) {
+    setBlinkedButton(value === 1 ? "confirm" : "reject")
+    setTimeout(() => { setBlinkedButton("default") }, totalAnimationTime)
+  }
+
   const userHasAnxiety = () => user.score === 6
   const userDeniedParticipating = (answareScore) => currentQuestion.classification === "startText" && answareScore === 0
   const userIsDoingTheQuestionary = () => currentQuestion.classification === "question"
@@ -80,15 +89,15 @@ export function AnxietyGamePage() {
                 {true ?
                   <>
                     <button
-                      className="button-confirm rounded-icon-button"
-                      onClick={!flip ? () => answareQuestion({ answareScore: 1 }) : () => { }}
+                      className={`button-confirm rounded-icon-button ${blinkedButton === "confirm" ? "blinkButton" : ""}`}
+                      onClick={!flip ? () => handleAnswareQuestion({ answareScore: 1 }) : () => { }}
                     >
                       <MdOutlineCheck size="48" color="white" />
                     </button>
 
                     <button
-                      className="button-reject rounded-icon-button"
-                      onClick={!flip ? () => answareQuestion({ answareScore: 0 }) : () => { }}
+                      className={`button-reject rounded-icon-button ${blinkedButton === "reject" ? "blinkButton" : ""}`}
+                      onClick={!flip ? () => handleAnswareQuestion({ answareScore: 0 }) : () => { }}
                     >
                       <MdOutlineClose size="48" color="white" />
                     </button>
