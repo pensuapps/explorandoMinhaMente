@@ -54,10 +54,12 @@ export function AnxietyGamePage() {
     showThanksMsg && navigate("/")
     !showThanksMsg && setshowThanksMsg(true)
   }
+
   function animateScreen(value) {
     doPictureAnimation()
     blinkButtonAnimation(value)
   }
+  
   function doPictureAnimation() {
     setFlip(true)
     setTimeout(() => { setFlip(false) }, totalAnimationTime)
