@@ -6,14 +6,13 @@ import { Header } from "../components/Header"
 import { useAnxietyQuestions } from "../hooks/anxietyQuestionary"
 import { Link, useNavigate } from "react-router-dom"
 import { useUser } from "../hooks/user"
-import { useEffect, useState } from "react"
-import { addDoc, collection, db } from "../plugins/firebase";
+import { useState } from "react"
 
 export function AnxietyGamePage() {
   const navigate = useNavigate()
 
   const { isLastQuestion, incrementCurrentIndex, currentQuestion } = useAnxietyQuestions()
-  const { user, addScore } = useUser()
+  const { user, addScore, saveScore } = useUser()
 
   const [showResult, setShowResult] = useState(false)
   const [showThanksMsg, setshowThanksMsg] = useState(false)
@@ -23,25 +22,7 @@ export function AnxietyGamePage() {
   const halfAnimationTime = 1000
   const totalAnimationTime = 2000
 
-  useEffect(() => {
-    if (user.score === 6) {
-      setTimeout(() => { setShowResult(true) }, 1000)
-    }
-  }, [user.score])
-
-  useEffect(() => {
-    if (showResult && process.env.NODE_ENV === "production") {
-      addDoc(collection(db, "score"), {
-        score: user.score,
-        date: new Date().toLocaleDateString(),
-      });
-    }
-  }, [showResult, user.score])
-
   function handleAnswareQuestion({ answareScore }) {
-    if (userHasAnxiety()) {
-      return
-    }
 
     if (userDeniedParticipating(answareScore)) {
       navigate("/")
@@ -53,14 +34,17 @@ export function AnxietyGamePage() {
     }
 
     if (isLastQuestion) {
-      doPictureAnimation()
-      blinkButtonAnimation(answareScore)
-      setTimeout(() => { setShowResult(true) }, halfAnimationTime)
+      animateScreen(answareScore)
+      setTimeout(() => {
+        if (process.env.NODE_ENV === "production") {
+          saveScore()
+        }
+        setShowResult(true)
+      }, halfAnimationTime)
       return
     }
 
-    doPictureAnimation()
-    blinkButtonAnimation(answareScore)
+    animateScreen(answareScore)
     setTimeout(() => { incrementCurrentIndex() }, halfAnimationTime)
 
   }
@@ -70,7 +54,10 @@ export function AnxietyGamePage() {
     showThanksMsg && navigate("/")
     !showThanksMsg && setshowThanksMsg(true)
   }
-
+  function animateScreen(value) {
+    doPictureAnimation()
+    blinkButtonAnimation(value)
+  }
   function doPictureAnimation() {
     setFlip(true)
     setTimeout(() => { setFlip(false) }, totalAnimationTime)
@@ -81,7 +68,6 @@ export function AnxietyGamePage() {
     setTimeout(() => { setBlinkedButton("default") }, totalAnimationTime)
   }
 
-  const userHasAnxiety = () => user.score === 6
   const userDeniedParticipating = (answareScore) => currentQuestion.classification === "startText" && answareScore === 0
   const userIsDoingTheQuestionary = () => currentQuestion.classification === "question"
 
