@@ -11,7 +11,7 @@ export function useUser() {
   async function saveScore() {
     await addDoc(collection(db, "score"), {
       score: user.score,
-      date: new Date().toLocaleDateString(),
+      date: new Date().toLocaleDateString("pt-BR"),
     });
   }
 

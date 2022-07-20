@@ -109,7 +109,7 @@ export function AnxietyGamePage() {
                   Ficamos felizes por ter respondido tudo! Obrigado !
                 </h2>
                 :
-                user.score === 6 ?
+                user.score >= 6 ?
                   <h2 className="question-result-text">
                     Você deve conversar com os professores e seus pais sobre como se sente e o que acontece na escola.
                   </h2> :
