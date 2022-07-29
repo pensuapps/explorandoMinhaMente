@@ -8,9 +8,10 @@ export function useUser() {
 
   const addScore = () => setUser({ score: ++user.score });
 
-  async function saveScore() {
+  async function saveScore(questionaryName) {
     await addDoc(collection(db, "score"), {
       score: user.score,
+      questionaryName,
       date: new Date().toLocaleDateString("pt-BR"),
     });
   }

@@ -37,7 +37,7 @@ export function AnxietyGamePage() {
       animateScreen(answareScore)
       setTimeout(() => {
         if (process.env.NODE_ENV === "production") {
-          saveScore()
+          saveScore("ansiedade")
         }
         setShowResult(true)
       }, halfAnimationTime)
