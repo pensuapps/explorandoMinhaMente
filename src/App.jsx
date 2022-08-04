@@ -18,7 +18,7 @@ function App() {
           element={<AnxietyInfoPage />}
         />
         <Route
-          path="/informacoessobreDepressao"
+          path="/informacoessobredepressao"
           element={<DepressionInfoPage />}
         />
       </Routes>
