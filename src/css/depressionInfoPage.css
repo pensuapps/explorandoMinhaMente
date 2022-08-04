@@ -1,14 +1,14 @@
-.banner-info {
+.depression-info-page .banner-info {
   width: 20.5rem;
   height: 13.25rem;
   margin: auto;
 }
 
-.banner-info img {
+.depression-info-page .banner-info img {
   width: 100%;
 }
 
-.about-anxiety {
+.depression-info-page .about-anxiety {
   max-width: 20.5rem;
   margin: auto;
 
@@ -17,7 +17,7 @@
   text-align: justify;
 }
 
-.actions-buttons-container {
+.depression-info-page .actions-buttons-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -27,7 +27,7 @@
   margin-top: 3rem;
 }
 
-.legended-button {
+.depression-info-page .legended-button {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -38,18 +38,18 @@
   color: white;
 }
 
-.legended-button p {
+.depression-info-page .legended-button p {
   font-weight: 700;
 }
 
-.entendi {
+.depression-info-page .entendi {
   background-color: var(--blue-dark1);
 }
 
-.interessante {
+.depression-info-page .interessante {
   background-color: var(--green-dark);
 }
 
-.nao-entendi {
+.depression-info-page .nao-entendi {
   background-color: var(--red);
 }

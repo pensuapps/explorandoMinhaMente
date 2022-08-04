@@ -24,6 +24,7 @@ export function HomePage() {
           label="Descobrindo a ansiedade"
         />
         <SquareButton
+          to="/jogodadepressao"
           src={depressao}
           imgAltLabel="homem com várias caixas de dialogo envolta. Os dialogos representam muitos assuntos"
           label="Descobrindo a depressão"
