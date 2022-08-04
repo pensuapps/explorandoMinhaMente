@@ -1,4 +1,4 @@
-import "../css/anxietyInfoPage.modules.css"
+import "../css/anxietyInfoPage.css"
 
 import kidthinking from "../images/anxietyGame/kidthinking-anxietyinfo.png"
 
@@ -16,7 +16,7 @@ export function AnxietyInfoPage() {
   return (
     <>
       <Header backTo="/" />
-      <main>
+      <main className="anxiety-info-page">
         <div className="banner-info">
           <img
             src={kidthinking}

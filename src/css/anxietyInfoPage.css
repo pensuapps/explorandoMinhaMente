@@ -1,0 +1,55 @@
+.anxiety-info-page .banner-info {
+  width: 20.5rem;
+  height: 13.25rem;
+  margin: auto;
+}
+
+.anxiety-info-page .banner-info img {
+  width: 100%;
+}
+
+.anxiety-info-page .about-anxiety {
+  max-width: 20.5rem;
+  margin: auto;
+
+  font-weight: 700;
+  font-size: 1rem;
+  text-align: justify;
+}
+
+.anxiety-info-page .actions-buttons-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  max-width: 20.5rem;
+  margin: auto;
+  margin-top: 3rem;
+}
+
+.anxiety-info-page .legended-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  background-color: transparent;
+
+  color: white;
+}
+
+.anxiety-info-page .legended-button p {
+  font-weight: 700;
+}
+
+.anxiety-info-page .entendi {
+  background-color: var(--blue-dark1);
+}
+
+.anxiety-info-page .interessante {
+  background-color: var(--green-dark);
+}
+
+.anxiety-info-page .nao-entendi {
+  background-color: var(--red);
+}

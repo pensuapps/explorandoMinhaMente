@@ -1,4 +1,4 @@
-import "../css/anxietyGamePage.modules.css"
+import "../css/anxietyGamePage.css"
 import { MdOutlineCheck, MdOutlineClose, MdThumbUp, MdThumbDown } from "react-icons/md"
 
 import { Banner } from "../components/Banner"
