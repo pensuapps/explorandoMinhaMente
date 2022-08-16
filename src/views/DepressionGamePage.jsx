@@ -66,7 +66,7 @@ export function DepressionGamePage() {
   }
 
   function blinkButtonAnimation(value) {
-    setBlinkButton(value === 2 ? "confirm" : value === 1 ? "somethimes" : "reject")
+    setBlinkButton(value === 2 ? "confirm" : value === 1 ? "sometimes" : "reject")
     setTimeout(() => { setBlinkButton("default") }, totalAnimationTime)
   }
 
@@ -98,7 +98,7 @@ export function DepressionGamePage() {
                 {currentQuestion.classification === "question" &&
                   <div className="button-wrapper">
                     <button
-                      className={`button-sometimes rounded-icon-button ${blinkButton === "somethimes" ? "blinkButton" : ""}`}
+                      className={`button-sometimes rounded-icon-button ${blinkButton === "sometimes" ? "blinkButton" : ""}`}
                       onClick={!flip ? () => handleAnswareQuestion({ answareScore: 1 }) : () => { }}
                     >
                       <MdThumbsUpDown size="48" color="white" />
