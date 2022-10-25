@@ -22,7 +22,7 @@ export function DepressionGamePage() {
   const halfAnimationTime = 1000
   const totalAnimationTime = 2000
 
-  function handleAnswareQuestion({ answareScore }) {
+  function handleAnswareQuestion({ answareScore, label }) {
 
     if (userDeniedParticipating(answareScore)) {
       navigate("/")
@@ -30,11 +30,12 @@ export function DepressionGamePage() {
     }
 
     if (userIsDoingTheQuestionary() && !!answareScore) {
-      addScore(answareScore)
+      addScore()
     }
 
+    animateScreen(label)
+
     if (isLastQuestion) {
-      animateScreen(answareScore)
       setTimeout(() => {
         if (process.env.NODE_ENV === "production") {
           saveScore("depressão")
@@ -44,13 +45,12 @@ export function DepressionGamePage() {
       return
     }
 
-    animateScreen(answareScore)
     setTimeout(() => { incrementCurrentIndex() }, halfAnimationTime)
 
   }
 
-  function handleClickThumb({ answareScore }) {
-    blinkButtonAnimation(answareScore)
+  function handleClickThumb({ label }) {
+    blinkButtonAnimation(label)
     showThanksMsg && navigate("/")
     !showThanksMsg && setshowThanksMsg(true)
   }
@@ -66,7 +66,7 @@ export function DepressionGamePage() {
   }
 
   function blinkButtonAnimation(value) {
-    setBlinkButton(value === 2 ? "confirm" : value === 1 ? "sometimes" : "reject")
+    setBlinkButton(value === "sim" ? "confirm" : value === "as vezes" ? "sometimes" : "reject")
     setTimeout(() => { setBlinkButton("default") }, totalAnimationTime)
   }
 
@@ -88,7 +88,7 @@ export function DepressionGamePage() {
                 <div className="button-wrapper">
                   <button
                     className={`button-confirm rounded-icon-button ${blinkButton === "confirm" ? "blinkButton" : ""}`}
-                    onClick={!flip ? () => handleAnswareQuestion({ answareScore: 2 }) : () => { }}
+                    onClick={!flip ? () => handleAnswareQuestion({ answareScore: 1, label: "sim" }) : () => { }}
                   >
                     <MdOutlineCheck size="48" color="white" />
                   </button>
@@ -99,7 +99,7 @@ export function DepressionGamePage() {
                   <div className="button-wrapper">
                     <button
                       className={`button-sometimes rounded-icon-button ${blinkButton === "sometimes" ? "blinkButton" : ""}`}
-                      onClick={!flip ? () => handleAnswareQuestion({ answareScore: 1 }) : () => { }}
+                      onClick={!flip ? () => handleAnswareQuestion({ answareScore: 1, label: "as vezes" }) : () => { }}
                     >
                       <MdThumbsUpDown size="48" color="white" />
                     </button>
@@ -109,7 +109,7 @@ export function DepressionGamePage() {
                 <div className="button-wrapper">
                   <button
                     className={`button-reject rounded-icon-button ${blinkButton === "reject" ? "blinkButton" : ""}`}
-                    onClick={!flip ? () => handleAnswareQuestion({ answareScore: 0 }) : () => { }}
+                    onClick={!flip ? () => handleAnswareQuestion({ answareScore: 0, label: "nao" }) : () => { }}
                   >
                     <MdOutlineClose size="48" color="white" />
                   </button>
@@ -138,14 +138,14 @@ export function DepressionGamePage() {
               <div className="action-buttons-container">
                 <button
                   className={`button-confirm rounded-icon-button ${blinkButton === "confirm" ? "blinkButton" : ""}`}
-                  onClick={() => handleClickThumb({ answareScore: 2 })}
+                  onClick={() => handleClickThumb({ label: "sim" })}
                 >
                   <MdThumbUp size="48" color="white" />
                 </button>
 
                 <button
                   className={`button-reject rounded-icon-button ${blinkButton === "reject" ? "blinkButton" : ""}`}
-                  onClick={() => handleClickThumb({ answareScore: 0 })}
+                  onClick={() => handleClickThumb({ label: "nao" })}
                 >
                   <MdThumbDown size="48" color="white" />
                 </button>
