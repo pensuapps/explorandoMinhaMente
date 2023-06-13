@@ -1,33 +1,39 @@
 import { useEffect } from "react";
 import { SquareButton } from "../components/buttons/SquareButton";
 import { Logo } from "../components/Logo";
-import "../css/homePage.modules.css"
+import "../css/homePage.modules.css";
 
-import ansiedade from "../images/ansiedade.png"
-import depressao from "../images/depressao.png"
+import ansiedade from "../images/ansiedade.png";
+import depressao from "../images/depressao.png";
+import bullying from "../images/bullying.png";
 
-import ReactGA from "react-ga"
+import ReactGA from "react-ga";
 
 export function HomePage() {
   useEffect(() => {
-    ReactGA.pageview(window.location.pathname)
-  }, [])
+    ReactGA.pageview(window.location.pathname);
+  }, []);
   return (
     <main>
       <Logo />
 
       <section className="buttons-container">
         <SquareButton
-          to="/jogodaansiedade"
+          path="https://pensu-descobrindoansiedade.web.app/"
           src={ansiedade}
           imgAltLabel="homem com várias caixas de dialogo envolta. Os dialogos representam muitos assuntos"
           label="Descobrindo a ansiedade"
         />
         <SquareButton
-          to="/jogodadepressao"
+          path="https://pensu-descobrindoadepressao.web.app"
           src={depressao}
           imgAltLabel="homem com várias caixas de dialogo envolta. Os dialogos representam muitos assuntos"
           label="Descobrindo a depressão"
+        />
+        <SquareButton
+          path="https://pensu-descobrindobullying.web.app"
+          src={bullying}
+          label="Descobrindo o bullying"
         />
       </section>
     </main>
